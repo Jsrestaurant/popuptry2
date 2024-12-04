@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review & Get Free Drink</title>
+    <style>
+        /* Deine vorherige CSS bleibt hier */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Review & Get Free Drink</h1>
+        
+        <!-- Popup Button -->
+        <button id="reviewPopupButton">Leave a Review</button>
+
+        <!-- Modal Popup (hidden by default) -->
+        <div id="reviewPopup" style="display: none;">
+            <h2>IMPORTANT: Confirm Review Here</h2>
+            <p>Click the button below to submit your review and then enter your details.</p>
+            <a href="https://www.google.com/search?q=J%27S+Restaurant+%26+Lounge" target="_blank">
+                Leave Google Review
+            </a>
+            <form id="detailsForm" style="display: none;" action="YOUR_FORM_ACTION_URL" method="post">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <input type="submit" value="Submit Details">
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Funktionalität zum Anzeigen des Popups
+        document.getElementById("reviewPopupButton").onclick = function() {
+            document.getElementById("reviewPopup").style.display = "block";
+        };
+
+        // Formular anzeigen, nachdem der Benutzer auf den Review-Link geklickt hat
+        document.querySelector("a[href='https://www.google.com/search?q=J%27S+Restaurant+%26+Lounge']").onclick = function() {
+            setTimeout(function() {
+                document.getElementById("detailsForm").style.display = "block";
+            }, 2000); // Warten für eine gewisse Zeit, um sicherzustellen, dass die Seite geöffnet wurde
+        };
+    </script>
+</body>
+</html>
