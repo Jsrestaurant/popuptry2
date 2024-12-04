@@ -5,7 +5,140 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Review & Get Free Drink</title>
     <style>
-        /* Deine vorherige CSS bleibt hier */
+        /* Global Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Main Container with Layered Frame */
+        .container {
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+            padding: 20px;
+            background-color: #1a1a1a;
+            border-radius: 15px;
+            box-shadow: 
+                0 0 0 2px #333333,
+                0 10px 30px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Title Styles */
+        h1 {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff0000;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+
+        /* Logo Styles */
+        .logo img {
+            max-width: 120px;
+            margin: 10px auto;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        /* Intro Text */
+        p {
+            font-size: 14px;
+            color: #dddddd;
+            margin-bottom: 20px;
+        }
+
+        /* Button Styles */
+        #reviewPopupButton {
+            background-color: #ff0000;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        #reviewPopupButton:hover {
+            background-color: #ff3333;
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(255, 0, 0, 0.5);
+        }
+
+        /* Popup Modal Styles */
+        #reviewPopup {
+            display: none;
+            background-color: #1a1a1a;
+            border: 2px solid #ff0000;
+            padding: 20px;
+            border-radius: 10px;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        /* Form Styles */
+        #detailsForm {
+            display: none;
+            margin-top: 20px;
+        }
+
+        input[type="text"], input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #333333;
+            border: 1px solid #555555;
+            color: #ffffff;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #ff0000;
+            color: #ffffff;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #ff3333;
+            transform: translateY(-3px) scale(1.02);
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 15px;
+            font-size: 12px;
+            color: #bbbbbb;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+        }
     </style>
 </head>
 <body>
@@ -16,13 +149,13 @@
         <button id="reviewPopupButton">Leave a Review</button>
 
         <!-- Modal Popup (hidden by default) -->
-        <div id="reviewPopup" style="display: none;">
+        <div id="reviewPopup">
             <h2>IMPORTANT: Confirm Review Here</h2>
             <p>Click the button below to submit your review and then enter your details.</p>
             <a href="https://www.google.com/search?q=J%27S+Restaurant+%26+Lounge" target="_blank">
                 Leave Google Review
             </a>
-            <form id="detailsForm" style="display: none;" action="YOUR_FORM_ACTION_URL" method="post">
+            <form id="detailsForm" action="YOUR_FORM_ACTION_URL" method="post">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>
                 <label for="email">Email:</label>
@@ -30,19 +163,22 @@
                 <input type="submit" value="Submit Details">
             </form>
         </div>
+
+        <!-- Footer -->
+        <footer>© 2024 J'S Restaurant & Lounge. Your perfect beachfront dining destination.</footer>
     </div>
 
     <script>
-        // Funktionalität zum Anzeigen des Popups
+        // Show the Popup when the button is clicked
         document.getElementById("reviewPopupButton").onclick = function() {
             document.getElementById("reviewPopup").style.display = "block";
         };
 
-        // Formular anzeigen, nachdem der Benutzer auf den Review-Link geklickt hat
+        // Display the form after clicking on the review link
         document.querySelector("a[href='https://www.google.com/search?q=J%27S+Restaurant+%26+Lounge']").onclick = function() {
             setTimeout(function() {
                 document.getElementById("detailsForm").style.display = "block";
-            }, 2000); // Warten für eine gewisse Zeit, um sicherzustellen, dass die Seite geöffnet wurde
+            }, 2000); // Delay before showing the form
         };
     </script>
 </body>
